@@ -1,1 +1,39 @@
-<h1> {{ message }} </h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title> {{ title }}</title>
+    {% else %}
+    <title> Welcome to the best News API website </title>
+    {% endif %}
+    {% import 'macros.html' as macro%}
+</head>
+
+<body>
+    <!-- Content block -->
+{% block content %}
+
+    <!-- Latest news section  -->
+    <h3> Latest News</h3>
+    <ul>
+            {% extends 'base.html'%}
+            {% macro.displayNews(latest)%}
+    </ul>
+
+    <!-- Hottest News  -->
+    <h3> Hottest </h3>
+        <ul>
+            {{ macro.displayNews(hottest)}}
+        </ul> 
+    <!-- Trending News -->
+    <h3>Trending</h3>
+        <ul>
+            {{ macro.displayNews(trending)}}
+        </ul>
+
+        {% endblock%} 
+</body>
+
+</html>
