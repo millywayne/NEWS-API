@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ News }}</title>
-        {% else %}
-        <title> Welcome to the best Movie Review website </title>
-        {% endif %}
-    </head>
-    <body>
 
-    </body>
+<head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title> {{ News }}</title>
+    {% else %}
+    <title> Welcome to the best Movie Review website </title>
+    {% endif %}
+</head>
+
+<body>
+    {% extends 'base.html'%}
+    <!-- Content block -->
+    {% block content %}
+    <div class="container">
+
+        <!-- Poster background -->
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath"
+                style="background: url({{news.poster}}) no-repeat center center">
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 news-details">
+                <h3>{{ news.title }}</h3>
+
+                <p class="overview"> {{ news.overview }}</p>
+                <p class="ratings"> <b> {{ news.vote_average }}</b> - <i>{{ news.vote_count}} votes </i> </p>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
 </html>
