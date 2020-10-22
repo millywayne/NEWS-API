@@ -10,7 +10,11 @@
 <!-- Content block -->
 {% block content %}
 <div class="container">
-
+        <form>
+            <input type="text" name="news_query" placeholder="Search for a News" class="form-control">
+            <input type="submit"  value="Submit" class="btn btn-default">
+        </form>
+    
 
     <!-- Latest news section  -->
     <div class="row">
@@ -19,7 +23,7 @@
             {% macro.displayNews(latest)%}
         </ul>
     </div>
-    
+
     <!-- Hottest News  -->
     <div class="row">
         <h3> Hottest </h3>
