@@ -6,6 +6,7 @@
     {% if title %}
     <title> {{ News }}</title>
     {% else %}
+    {% import 'macros.html' as macro%}
     <title> Welcome to the best Movie Review website </title>
     {% endif %}
 </head>
@@ -14,10 +15,10 @@
     {% extends 'base.html'%}
     <!-- Styles block -->
 
-{% block styles%}
-{{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/news.css')}}">
-{% endblock %}
+    {% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/news.css')}}">
+    {% endblock %}
 
     <!-- Content block -->
     {% block content %}
@@ -34,9 +35,23 @@
 
                 <p class="overview"> {{ news.overview }}</p>
                 <p class="ratings"> <b> {{ news.vote_average }}</b> - <i>{{ news.vote_count}} votes </i> </p>
+                <a class="ratings" href="/news/review/new/{{news.id}}"> Write a new review</a>
             </div>
         </div>
     </div>
+    <div class="row">
+
+        <h1>Reviews</h1>
+        <hr>
+
+        {% if reviews %}
+            {{macro.displayReviews(reviews)}}
+
+        {% else%}
+            <h3 class="text-center">This news section has no reviews </h3>
+
+            <a class="btn btn-success btn-lg text-center" href="/news/review/{{news.id}}"> Write a new review</a>
+            {% endif %} 
     {% endblock %}
 </body>
 

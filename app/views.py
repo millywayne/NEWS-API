@@ -43,8 +43,9 @@ def news(news_id):
     '''
     news = get_news(id)
     title = f'{news.title}'
+    reviews = Review.get_reviews(news.id)
     
-    return render_template('news.html',id = news_id,  title = title, news = news) 
+    return render_template('news.html',id = news_id,  title = title, news = news, reviews = reviews) 
 
 @app.route('/search/<news_name>')
 def search(news_name):
