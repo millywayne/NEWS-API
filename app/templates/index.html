@@ -1,39 +1,39 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
 
-<head>
-    <meta charset="utf-8">
-    {% if title %}
-    <title> {{ title }}</title>
-    {% else %}
-    <title> Welcome to the best News API website </title>
-    {% endif %}
-    {% import 'macros.html' as macro%}
-</head>
+<!-- Styles block -->
 
-<body>
-    <!-- Content block -->
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+<!-- Content block -->
 {% block content %}
+<div class="container">
+
 
     <!-- Latest news section  -->
-    <h3> Latest News</h3>
-    <ul>
-            {% extends 'base.html'%}
+    <div class="row">
+        <h3> Latest News</h3>
+        <ul>
             {% macro.displayNews(latest)%}
-    </ul>
-
+        </ul>
+    </div>
+    
     <!-- Hottest News  -->
-    <h3> Hottest </h3>
+    <div class="row">
+        <h3> Hottest </h3>
         <ul>
             {{ macro.displayNews(hottest)}}
-        </ul> 
+        </ul>
+    </div>
+
     <!-- Trending News -->
-    <h3>Trending</h3>
+    <div class="row">
+        <h3>Trending</h3>
         <ul>
             {{ macro.displayNews(trending)}}
         </ul>
-
-        {% endblock%} 
-</body>
-
-</html>
+    </div>
+</div>
+{% endblock%}
