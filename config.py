@@ -1,11 +1,11 @@
- import os
-
+import os
+ 
 class Config:
     '''
     General configuration parent class
     '''
    
-    MOVIE_API_BASE_URL = 'http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=487c722040f046eaa31635a68e73583c'
+    MOVIE_API_BASE_URL = 'http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey={}'
     MOVIE_API_KEY = os.environ.get('MOVIE_API_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
 

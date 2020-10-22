@@ -1,7 +1,7 @@
 from flask import Flask
 from config import DevConfig
 from flask_bootstrap import Bootstrap
-from flask import main as main_blueprint
+from manage import main as main_blueprint
 
 
 bootstrap = Bootstrap()
@@ -28,10 +28,6 @@ bootstrap.init_app(app)
  # Registering the blueprint
 app.register_blueprint(main_blueprint,)
 
-
-
-
-
-from app import views
-from app import error
-
+ # setting config
+from .requests import configure_request
+configure_request(app)
