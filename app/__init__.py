@@ -1,5 +1,6 @@
-from flask import Flask
 from config import DevConfig
+from flask import Flask
+
 from flask_bootstrap import Bootstrap
 from app import main as main_blueprint
 
@@ -25,8 +26,6 @@ app.config.from_pyfile('config.py')
 bootstrap.init_app(app)
 
  # Registering the blueprint
-from .main import main as main_blueprint
-
 app.register_blueprint(main_blueprint)
 
  # setting config
